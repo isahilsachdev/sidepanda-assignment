@@ -13,7 +13,7 @@ const TimeslotList = ({ selectedDate, timeslots, onTimeslotSelect }) => {
   
   return (
     <div className="timeslot-list">
-      <div>{new Date(selectedDate). toLocaleDateString('en-US', options).toUpperCase()} - Available Slots</div>
+      <div>{new Date(selectedDate).toLocaleDateString('en-US', options).toUpperCase()} - Available Slots</div>
       <div>
         {timeslots.map((timeslot, index) => (
           <div key={index}>
