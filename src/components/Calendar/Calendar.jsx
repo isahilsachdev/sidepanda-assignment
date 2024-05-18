@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import { fetchTimeslots, setSelectedSlot } from '../redux/actions/calendarActions';
-import TimeslotList from './TimeslotList';
-import LoadingSpinner from './LoadingSpinner';
+import { fetchTimeslots, setSelectedSlot } from '../../redux/actions/calendarActions';
+import TimeslotList from '../Timslot/TimeslotList';
+import LoadingSpinner from '../Loader/LoadingSpinner';
 import './Calendar.css';
-import Dropdown from './Dropdown';
-import CalenderFooter from './Footer';
+import Dropdown from '../Dropdown/Dropdown';
+import CalenderFooter from '../Footer/Footer';
 
 const CalendarComponent = () => {
   const dispatch = useDispatch();

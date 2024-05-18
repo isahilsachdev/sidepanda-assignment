@@ -1,6 +1,6 @@
-import RightArrow from "../icons/RightArrow";
+import RightArrow from "../../icons/RightArrow";
 import "./Footer.css";
-import ToastNotification, { notifySuccess, notifyWarning } from './ToastNotification';
+import ToastNotification, { notifySuccess, notifyWarning } from '../ToastNotification/ToastNotification';
 
 const CalenderFooter = ({selectedSlot}) => {
   const options = {

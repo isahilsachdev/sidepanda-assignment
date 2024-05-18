@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import TickIcon from '../icons/TickIcon';
+import TickIcon from '../../icons/TickIcon';
 
 const TimeslotDiv = ({ timeslot, onTimeslotSelect }) => {
   const { selectedSlot } = useSelector((state) => state.calendar);

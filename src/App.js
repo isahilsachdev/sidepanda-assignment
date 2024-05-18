@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import CalendarComponent from './components/Calendar';
+import CalendarComponent from './components/Calendar/Calendar';
 
 const App = () => {
   return (
