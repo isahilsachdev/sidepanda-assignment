@@ -7,19 +7,19 @@
 }
 
 .calendar-container {
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
   display: flex;
   justify-content: space-between;
   min-height: 70%;
   height: 70%;
   max-width: 60%;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 }
 
 .calendar-box {
   padding: 4%;
   background-color: #ebebf0;
-  border-radius: 10px 0px 0px 0px;
+  border-radius: 10px 0 0 0;
   width: 40%;
   max-width: 40%;
   min-height: 100%;
@@ -134,7 +134,7 @@
     min-height: 100%;
     width: 92%;
     max-width: 92%;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 10px 10px 0 0;
   }
   
   .calendar-empty-state {
