@@ -75,7 +75,7 @@
   width: 30px;
 }
 
-.calendar .react-calendar__navigation button:enabled:hover {
+.calendar .react-calendar__navigation button:enabled:hover, .calendar .react-calendar__navigation button:enabled:focus {
   height: 30px;
   width: fit-content;
   border-radius: 20px;
