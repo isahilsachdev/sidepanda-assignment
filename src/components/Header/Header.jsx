@@ -1,5 +1,5 @@
 import "./Header.css";
-import SampleLogo from "../../icons/SampleLogo.png";
+import SampleLogo from "../../icons/SampleLogo.svg";
 import ShareIcon from "../../icons/ShareIcon";
 import DownArrow from "../../icons/DownArrow";
 

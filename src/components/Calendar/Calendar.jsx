@@ -15,6 +15,10 @@ const CalendarComponent = () => {
   const { selectedDate, timeslots, original_timeslots, loading, selectedSlot } = useSelector((state) => state.calendar);
   const [selectedInterval, setselectedInterval] = useState(30);
 
+  // for avoiding past date selection
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
   // fetching time slots on initial load
   useEffect(() => {
     dispatch(fetchTimeslots(selectedDate));
@@ -70,6 +74,8 @@ const CalendarComponent = () => {
             value={selectedDate}
             onChange={handleDateChange}
             className="calendar"
+            minDate={today}
+            locale="en-US"
           />
         </div>
         {
