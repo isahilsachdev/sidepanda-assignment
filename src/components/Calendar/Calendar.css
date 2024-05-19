@@ -79,6 +79,7 @@
   height: 30px;
   width: fit-content;
   border-radius: 20px;
+  background-color: transparent;
 }
 
 .calendar .react-calendar__tile:hover {
