@@ -15,6 +15,15 @@ export const setTimeslots = (timeslots) => ({
   payload: timeslots,
 });
 
+export const setOriginalTimeslots = (timeslots) => ({
+  type: 'SET_ORIGINAL_TIMESLOTS',
+  payload: timeslots,
+});
+
+export const setLoading = () => ({
+  type: 'SET_LOADING',
+});
+
 export const fetchTimeslots = (date) => {
   return async (dispatch) => {
     dispatch(setSelectedDate(date));
@@ -27,6 +36,7 @@ export const fetchTimeslots = (date) => {
       // Fetch timeslots from the API
       const timeslots = await fetchTimeslotsFromAPI(startDate, endDate);
       dispatch(setTimeslots(timeslots[0]?.slots || []));
+      dispatch(setOriginalTimeslots(timeslots[0]?.slots || []));
     } catch (error) {
       console.error('Error fetching timeslots:', error);
     }

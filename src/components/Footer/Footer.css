@@ -43,6 +43,15 @@
   .footer {
     padding: 10px 15px;
     margin-bottom: 50px;
+    width: 64%;
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 500px) {
+  .footer {
+    padding: 10px 15px;
+    margin-bottom: 50px;
     width: 80%;
     max-width: 80%;
   }
