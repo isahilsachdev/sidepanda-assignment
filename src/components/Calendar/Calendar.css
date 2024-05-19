@@ -5,6 +5,7 @@
   min-height: 70%;
   height: 70%;
   max-width: 60%;
+  width: 60%;
   box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 }
 
@@ -19,10 +20,23 @@
 
 .calendar-box h2 {
   margin: 0;
+  color: #28293D;
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .calendar-box p {
   margin-bottom: 26px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #555770;
+}
+
+.calendar-box p span {
+  margin-bottom: 26px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #555770;
 }
 
 .calendar {
@@ -44,18 +58,27 @@
 
 .calendar .react-calendar__navigation__label {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
   text-transform: uppercase;
 }
 
-.calendar .react-calendar__tile, .calendar .react-calendar__navigation button:disabled {
+.calendar .react-calendar__tile, .calendar .react-calendar__navigation button:disabled, .calendar .react-calendar__navigation button:enabled:hover {
   max-width: initial;
-  border-radius: 50%;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 30px;
+  margin: 6px 0; 
   width: 30px;
+}
+
+.calendar .react-calendar__navigation button:enabled:hover {
+  height: 30px;
+  width: fit-content;
+  border-radius: 20px;
 }
 
 .calendar .react-calendar__tile:hover {
@@ -86,8 +109,13 @@
 
 .calendar .react-calendar__month-view__weekdays {
   text-transform: uppercase;
-  font-weight: bold;
-  font-size: 0.8rem;
+  font-weight: 600;
+  font-size: 14px;
+  color: #378760;
+}
+
+.calendar .react-calendar__month-view__weekdays abbr {
+  color: #378760;
 }
 
 .calendar .react-calendar__month-view__days__day--neighboringMonth {
@@ -104,7 +132,7 @@
 }
 
 .calendar abbr {
-  color: #378760;
+  color: #333;
   text-decoration: none;
 }
 

@@ -67,7 +67,7 @@ const CalendarComponent = () => {
           <h2>
             Test Service
           </h2>
-          <p><strong>Timezone:</strong>{" "} Asia/Culcutta</p>
+          <p>Timezone:{" "} <span>Asia/Culcutta</span></p>
 
           {/* calendar component */}
           <Calendar
