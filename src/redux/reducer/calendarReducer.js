@@ -3,6 +3,7 @@ const initialState = {
   selectedSlot: {},
   timeslots: [],
   original_timeslots: [],
+  monthSlots: {},
   loading: true,
 };
 
@@ -14,6 +15,11 @@ const calendarReducer = (state = initialState, action) => {
         selectedDate: action.payload,
         loading: true,
         selectedSlot: {}
+      };
+    case 'SET_MONTH_SLOTS':
+      return {
+        ...state,
+        monthSlots: { ...state.monthSlots, ...action.payload },
       };
     case 'SET_SELECTED_SLOT':
       return {
@@ -35,7 +41,7 @@ const calendarReducer = (state = initialState, action) => {
     case 'SET_LOADING':
       return {
         ...state,
-        loading: true,
+        loading: action.payload,
       };
     default:
       return state;

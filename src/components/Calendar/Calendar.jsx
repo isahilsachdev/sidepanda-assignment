@@ -12,20 +12,37 @@ import EmptyState from '../EmptyState/EmptyState';
 
 const CalendarComponent = () => {
   const dispatch = useDispatch();
-  const { selectedDate, timeslots, original_timeslots, loading, selectedSlot } = useSelector((state) => state.calendar);
+  const { selectedDate, timeslots, original_timeslots, loading, selectedSlot, monthSlots } = useSelector((state) => state.calendar);
   const [selectedInterval, setselectedInterval] = useState(30);
+  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 
   // for avoiding past date selection
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  // fetching time slots on initial load
+  // fetching time slots on initial load and month change
   useEffect(() => {
-    dispatch(fetchTimeslots(selectedDate));
-  }, [dispatch, selectedDate]);
+    const fetchInitialTimeslots = () => {
+      const initialDate = new Date();
+      dispatch(fetchTimeslots(initialDate));
+    };
+    fetchInitialTimeslots();
+  }, [dispatch, currentMonth, currentYear]);
 
   const handleDateChange = (date) => {
     dispatch(fetchTimeslots(date));
+  };
+
+  const handleActiveStartDateChange = ({ activeStartDate }) => {
+    const newMonth = activeStartDate.getMonth();
+    const newYear = activeStartDate.getFullYear();
+
+    if (newMonth !== currentMonth || newYear !== currentYear) {
+      setCurrentMonth(newMonth);
+      setCurrentYear(newYear);
+      dispatch(fetchTimeslots(activeStartDate));
+    }
   };
 
   // updating selected time slot
@@ -54,11 +71,10 @@ const CalendarComponent = () => {
   }
 
   useEffect(() => {
-    dispatch(setLoading());
-    // using original timeslot to update timeslots based on interval
+    // Update slots based on interval
     splitSlots(original_timeslots, selectedInterval);
-  }, [selectedInterval, original_timeslots])
-  
+  }, [selectedInterval, original_timeslots]);
+
   return (
     <>
       <div className="calendar-container">
@@ -67,12 +83,13 @@ const CalendarComponent = () => {
           <h2>
             Test Service
           </h2>
-          <p>Timezone:{" "} <span>Asia/Culcutta</span></p>
+          <p>Timezone: <span>Asia/Calcutta</span></p>
 
           {/* calendar component */}
           <Calendar
             value={selectedDate}
             onChange={handleDateChange}
+            onActiveStartDateChange={handleActiveStartDateChange}
             className="calendar"
             minDate={today}
             locale="en-US"
@@ -80,23 +97,21 @@ const CalendarComponent = () => {
             prev2Label={null} 
           />
         </div>
-        {
-          <div className='timeslot-container'>
-            <div className='timeslot-duration-container'>
-              <span>
-                SELECT FROM VARIANTS
-              </span>
-              <Dropdown selectedInterval={selectedInterval} setselectedInterval={setselectedInterval} />
-            </div>
-            {loading ? (
-              <LoadingSpinner />
-            ) : timeslots?.length > 0 ? (
-              <TimeslotList selectedDate={selectedDate} timeslots={timeslots} onTimeslotSelect={handleTimeslotSelect} />
-            ) : (
-              <EmptyState />
-            )}
+        <div className='timeslot-container'>
+          <div className='timeslot-duration-container'>
+            <span>
+              SELECT FROM VARIANTS
+            </span>
+            <Dropdown selectedInterval={selectedInterval} setselectedInterval={setselectedInterval} />
           </div>
-        }
+          {loading ? (
+            <LoadingSpinner />
+          ) : timeslots?.length > 0 ? (
+            <TimeslotList selectedDate={selectedDate} timeslots={timeslots} onTimeslotSelect={handleTimeslotSelect} />
+          ) : (
+            <EmptyState />
+          )}
+        </div>
       </div>
 
       {/* footer */}
